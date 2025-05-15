@@ -26,7 +26,7 @@ export default function BulkMessageForm({ sessionId, accessToken }) {
           if (!number) continue;
 
           try {
-            const url = new URL(`${import.meta.env.VITE_API_URL}/api/send`);
+            const url = new URL(`https://whatsapp.inventive.in/api/send`);
             url.searchParams.append('number', number);
             url.searchParams.append('message', bulkMessage.trim());
             url.searchParams.append('instance_id', sessionId);

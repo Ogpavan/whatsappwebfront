@@ -37,7 +37,7 @@ export default function SessionManager({
   const checkUserConnection = async () => {
     if (!sessionId) return;
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/user-details/${sessionId}`);
+      const res = await fetch(`https://whatsapp.inventive.in/user-details/${sessionId}`);
       if (res.ok) {
         const user = await res.json();
         setUserData(user);
@@ -67,7 +67,7 @@ export default function SessionManager({
     setStatus('idle');
 
     try {
-      const sessionRes = await fetch(`${import.meta.env.VITE_API_URL}/create-session`, { method: 'POST' });
+      const sessionRes = await fetch(`https://whatsapp.inventive.in/create-session`, { method: 'POST' });
       const sessionData = await sessionRes.json();
 
       if (!sessionData.sessionId || !sessionData.accessToken) {
@@ -86,7 +86,7 @@ export default function SessionManager({
         setWaitingForScan(true);
 
         const interval = setInterval(async () => {
-          const userRes = await fetch(`${import.meta.env.VITE_API_URL}/user-details/${sessionData.sessionId}`);
+          const userRes = await fetch(`https://whatsapp.inventive.in/user-details/${sessionData.sessionId}`);
           if (userRes.ok) {
             const user = await userRes.json();
             setUserData(user);
