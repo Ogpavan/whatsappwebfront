@@ -13,7 +13,7 @@ export default function SendMessageForm({ sessionId }) {
     setLoading(true);
 
     try {
-      const res = await fetch('http://45.113.225.69:3000/send-message', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/send-message`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sessionId, phoneNumber, message }),
